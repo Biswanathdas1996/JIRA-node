@@ -18,7 +18,10 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "fs-extra": "^10.1.0",
-    "path": "^0.12.7"
+    "js-base64": "^3.7.2",
+    "lodash": "^4.17.21",
+    "path": "^0.12.7",
+    "web3": "^1.7.3"
   },
   "devDependencies": {
     "eslint": "^5.13.0",

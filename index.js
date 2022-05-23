@@ -1,6 +1,8 @@
 const path = require("path");
 const fs = require("fs-extra");
 
+const { _fetch } = require("./web3/connect");
+
 var express = require("express"),
   bodyParser = require("body-parser"),
   logger = require("./logger/logger"),
@@ -19,14 +21,10 @@ app.get("/", function (req, res) {
   res.send("App works!!!!!");
 });
 
-app.post("/users", function (req, res) {
-  logger.info("users route");
-  const storeAddressPath = path.resolve(__dirname, ".", "src");
-  fs.removeSync(storeAddressPath);
-  fs.ensureDirSync(storeAddressPath);
-  fs.outputJsonSync(path.resolve(storeAddressPath, "Data.json"), req.body);
-  logger.info("create file ");
-  res.json(req.body);
+app.get("/users", async function (req, res) {
+  logger.info("data route");
+  const allUser = await _fetch("getAllUser");
+  res.json(allUser);
 });
 
 app.get("/data", function (req, res) {
